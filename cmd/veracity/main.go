@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
+
+	// "strings"
 
 	"github.com/datatrails/veracity"
 )
@@ -27,11 +28,11 @@ func main() {
 		versionString = fmt.Sprintf("%s %s", version, commit)
 	}
 
-	ikwid := false
-	envikwid := os.Getenv("VERACITY_IKWID")
-	if envikwid == "1" || strings.ToLower(envikwid) == "true" {
-		ikwid = true
-	}
+	ikwid := true
+	// envikwid := os.Getenv("VERACITY_IKWID")
+	// if envikwid == "1" || strings.ToLower(envikwid) == "true" {
+	// 	ikwid = true
+	// }
 	app := veracity.NewApp(versionString, ikwid)
 	veracity.AddCommands(app, ikwid)
 	if err := app.Run(os.Args); err != nil {

@@ -65,7 +65,7 @@ func NewDiagCmd() *cli.Command {
 				return err
 			}
 			tenant := cCtx.String("tenant")
-			if tenant == "" {
+			if tenant == "" && !cCtx.IsSet("data-local") {
 				fmt.Println("a tenant is required to get diagnostics that require reading a blob")
 				return nil
 			}
